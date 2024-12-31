@@ -6,7 +6,7 @@
 /*   By: jhyokki <jhyokki@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 13:35:33 by jhyokki           #+#    #+#             */
-/*   Updated: 2024/12/16 17:01:33 by jhyokki          ###   ########.fr       */
+/*   Updated: 2024/12/31 12:17:09 by jhyokki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t	ft_strlen(const char *s)
 	return (p - s);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*result;
 	size_t	len1;
