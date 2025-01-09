@@ -6,7 +6,7 @@
 /*   By: jhyokki <jhyokki@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 13:35:26 by jhyokki           #+#    #+#             */
-/*   Updated: 2024/12/16 17:23:36 by jhyokki          ###   ########.fr       */
+/*   Updated: 2025/01/09 20:09:33 by jhyokki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static char	*read_to_buffer(int fd, char *buffer)
 			free(buffer);
 			buffer = new_buffer;
 		}
+		else if (bytes_read == -1)
+			return (NULL);
 	}
 	return (buffer);
 }
@@ -43,7 +45,7 @@ static char	*get_line(char *buffer, size_t len)
 	line = malloc(sizeof(line) * (len + 1));
 	if (!line)
 		return (NULL);
-	ft_memcpy(line, buffer, len);
+	ft_memmove(line, buffer, len);
 	line[len] = '\0';
 	return (line);
 }

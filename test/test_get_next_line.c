@@ -6,7 +6,7 @@
 /*   By: jhyokki <jhyokki@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 15:33:49 by jhyokki           #+#    #+#             */
-/*   Updated: 2024/12/12 21:07:22 by jhyokki          ###   ########.fr       */
+/*   Updated: 2025/01/09 17:44:36 by jhyokki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,9 @@ END_TEST
 START_TEST(test_invalid_fd)
 {
 	char	*line = get_next_line(-1);
+	ck_assert_ptr_null(line);
+
+	line = get_next_line(1000);
 	ck_assert_ptr_null(line);
 }
 END_TEST

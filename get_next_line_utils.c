@@ -6,7 +6,7 @@
 /*   By: jhyokki <jhyokki@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 13:35:33 by jhyokki           #+#    #+#             */
-/*   Updated: 2024/12/16 17:01:33 by jhyokki          ###   ########.fr       */
+/*   Updated: 2025/01/09 20:09:31 by jhyokki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,33 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	result = malloc(sizeof(*result) * (len1 + len2 + 1));
 	if (!result)
 		return (NULL);
-	ft_memcpy(result, s1, len1);
-	ft_memcpy(result + len1, s2, len2);
+	ft_memmove(result, s1, len1);
+	ft_memmove(result + len1, s2, len2);
 	result[len1 + len2] = '\0';
 	return (result);
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char		*d;
 	const unsigned char	*s;
 
-	d = (unsigned char *) dest;
-	s = (const unsigned char *) src;
-	while (n--)
-		*d++ = *s++;
+	d = (unsigned char *)dest;
+	s = (const unsigned char *)src;
+	if (d == s)
+		return (dest);
+	if (d < s)
+	{
+		while (n--)
+			*d++ = *s++;
+	}
+	else
+	{
+		d += n;
+		s += n;
+		while (n--)
+			*--d = *--s;
+	}
 	return (dest);
 }
 
@@ -76,6 +88,6 @@ char	*ft_strdup(const char *s1)
 	copy = malloc(sizeof(*copy) * size);
 	if (copy == NULL)
 		return (NULL);
-	ft_memcpy(copy, s1, size);
+	ft_memmove(copy, s1, size);
 	return (copy);
 }
