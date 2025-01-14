@@ -33,7 +33,10 @@ static char	*read_to_buffer(int fd, char *buffer)
 			buffer = new_buffer;
 		}
 		else if (bytes_read == -1)
+		{
+			free(buffer);
 			return (NULL);
+		}
 	}
 	return (buffer);
 }
